@@ -1,9 +1,12 @@
 package com.hibernate.demo.UserDetails;
 
+import javax.persistence.Column;
 import javax.persistence.Embeddable;
+import javax.persistence.Table;
 
 @Embeddable
 public class Address {
+	@Column(name="STREET_NAME")
 	private String street;
 	private String state;
 	private String pincode;

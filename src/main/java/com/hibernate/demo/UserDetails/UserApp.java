@@ -18,7 +18,7 @@ public class UserApp {
 			Collection<Address> listOfAddress = new HashSet();
 			listOfAddress.add(add1);
 			listOfAddress.add(add2);
-			User user = new User("Sunil",add1);
+			User user = new User("Sunil",listOfAddress);
 			
 			session = factory.openSession();
 			session.beginTransaction();
