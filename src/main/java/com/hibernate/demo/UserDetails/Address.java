@@ -2,7 +2,6 @@ package com.hibernate.demo.UserDetails;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
-import javax.persistence.Table;
 
 @Embeddable
 public class Address {

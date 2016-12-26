@@ -1,8 +1,7 @@
 package com.hibernate.demo.UserDetails;
 
+import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashSet;
-
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Embedded;
@@ -13,7 +12,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.Table;
-
 import org.hibernate.annotations.CollectionId;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Type;
@@ -31,7 +29,7 @@ public class User {
 	@JoinTable(name="ADDRESS" ,joinColumns=@JoinColumn(name="USER_ID"))
 	@GenericGenerator(name = "hilo-gen", strategy = "hilo")
 	@CollectionId(columns = { @Column(name="ADDRESS_ID") }, generator = "hilo-gen", type = @Type(type = "long"))
-	private Collection<Address> listOfAddress = new HashSet();
+	private Collection<Address> listOfAddress = new ArrayList<Address>();
 
 	public User() {
 		// TODO Auto-generated constructor stub

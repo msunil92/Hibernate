@@ -14,7 +14,9 @@ public class UserApp {
 			session.beginTransaction();
 			session.save(user);
 			session.getTransaction().commit();
-			
+			user=null;
+			user = (User)session.get(User.class, 1);
+			System.out.println(user.getName());
 		}
 		catch(Exception e) {
 			System.out.println(e.toString());
