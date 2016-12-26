@@ -27,8 +27,7 @@ public class User {
 	private int id;
 	@Column(name="USER_NAME")
 	private String name;
-	@Embedded
-	@ElementCollection
+	@Embedded @ElementCollection
 	@JoinTable(name="ADDRESS" ,joinColumns=@JoinColumn(name="USER_ID"))
 	@GenericGenerator(name = "hilo-gen", strategy = "hilo")
 	@CollectionId(columns = { @Column(name="ADDRESS_ID") }, generator = "hilo-gen", type = @Type(type = "long"))
