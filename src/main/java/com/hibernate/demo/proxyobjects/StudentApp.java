@@ -14,6 +14,7 @@ public class StudentApp {
 		try{
 			College college1 = new College("RV");
 			College college2 = new College("NCJ");
+			College college3 = new College("NCJ");
 			
 			Collection<College> listOfAddress1 = new ArrayList<College>();
 			listOfAddress1.add(college1);
@@ -23,6 +24,7 @@ public class StudentApp {
 			Collection<College> listOfAddress2 = new ArrayList<College>();
 			listOfAddress2.add(college1);
 			listOfAddress2.add(college2);
+			listOfAddress2.add(college3);
 			Student s2 = new Student("Anil",listOfAddress2);
 			
 			session = factory.openSession();
@@ -30,13 +32,21 @@ public class StudentApp {
 			session.save(s1);
 			session.save(s2);
 			session.getTransaction().commit();
+			session.close();
+			
+			session = factory.openSession();
+			session.beginTransaction();
+			//session.close();
+			Student studentDetails = new Student();
+			studentDetails = (Student) session.get(Student.class, 2);
+			System.out.println(studentDetails.getListOfColleges().size());
 			
 		}
 		catch(Exception e) {
-			System.out.println(e.toString());
+			e.printStackTrace();
 		}
 		finally {
-			session.close();
+			//session.close();
 		}
 	}
 }

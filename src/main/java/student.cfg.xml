@@ -31,6 +31,7 @@
 
 		<!-- Names the annotated entity class -->
 		<mapping class="com.hibernate.demo.proxyobjects.Student" />
+		<mapping class="com.hibernate.demo.proxyobjects.College" />
 
 	</session-factory>
 

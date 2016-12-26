@@ -7,6 +7,7 @@ import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -18,21 +19,23 @@ import org.hibernate.annotations.CollectionId;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Type;
 
-@Entity @Table(name="STUDENT")
+@Entity
+@Table(name = "STUDENT")
 public class Student {
-	@Id @GeneratedValue(strategy=GenerationType.AUTO)
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
-	@Column(name="STUDENT_NAME")
+	@Column(name = "STUDENT_NAME")
 	private String name;
-	@Embedded @ElementCollection @JoinTable(name="COLLEGE_DETAIL",joinColumns=@JoinColumn(name="STUDENT_ID"))
-	@GenericGenerator(strategy="hilo", name="hilo-gen")
-	@CollectionId(columns = { @Column(name="COLLEGE_ID") }, generator = "hilo-gen", type = @Type(type="long"))
+	@Embedded
+	@ElementCollection(fetch=FetchType.EAGER)
+	@JoinTable(name = "COLLEGE_DETAIL", joinColumns = @JoinColumn(name = "STUDENT_ID"))
 	private Collection<College> listOfColleges = new ArrayList();
-	
-	public Student (){
-		
+
+	public Student() {
+
 	}
-	
+
 	public Student(String name, Collection<College> listOfColleges) {
 		this.listOfColleges = listOfColleges;
 		this.name = name;
@@ -61,6 +64,5 @@ public class Student {
 	public void setListOfColleges(Collection<College> listOfColleges) {
 		this.listOfColleges = listOfColleges;
 	}
-	
-	
+
 }
