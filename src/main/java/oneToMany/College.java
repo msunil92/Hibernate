@@ -1,4 +1,4 @@
-package oneToOne;
+package oneToMany;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

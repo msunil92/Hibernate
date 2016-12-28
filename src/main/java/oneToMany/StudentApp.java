@@ -1,4 +1,4 @@
-package oneToOne;
+package oneToMany;
 
 
 import java.util.ArrayList;
@@ -9,21 +9,27 @@ import org.hibernate.cfg.Configuration;
 
 public class StudentApp {
 	public static void main(String[] args) {
-		SessionFactory factory = new Configuration().configure("oneToOne.cfg.xml").buildSessionFactory();
+		SessionFactory factory = new Configuration().configure("oneToMany.cfg.xml").buildSessionFactory();
 		Session session = null;
 		try{
 			College college1 = new College();
 			college1.setName("NCJ");
-			college1.setPlace("Bangalore");
+			college1.setPlace("Mangalore");
+			College college2 = new College();
+			college2.setName("DHS");
+			college2.setPlace("Bangalore");
+			
 			Student s1 = new Student();
 			s1.setName("Sunil");
-			s1.setCollege(college1);
+			s1.getListOfColleges().add(college1);
+			s1.getListOfColleges().add(college2);
 			
 			
 			session = factory.openSession();
 			session.beginTransaction();
 			session.save(s1);
 			session.save(college1);
+			session.save(college2);
 			session.getTransaction().commit();
 			
 		}
