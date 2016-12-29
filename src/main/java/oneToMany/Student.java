@@ -23,8 +23,12 @@ public class Student {
 	private int id;
 	@Column(name = "STUDENT_NAME")
 	private String name;
+	/*
+	 * start this will create new table for mapping 
 	@OneToMany
 	@JoinTable(joinColumns=@JoinColumn(name="STUDNET_ID"), inverseJoinColumns=@JoinColumn(name="COLLEGE_ID"), name="STUDENT_COLLEGE")
+	 */
+	@OneToMany(mappedBy="student") // creates join column doesn't create new table 
 	private Collection<College> listOfColleges = new ArrayList<College>();
 
 	public Student() {

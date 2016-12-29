@@ -30,8 +30,7 @@
 		<property name="hbm2ddl.auto">create</property>
 
 		<!-- Names the annotated entity class -->
-		<mapping class="oneToMany.Student" />
-		<mapping class="oneToMany.College" />
+		<mapping class="com.hibernate.demo.UserDetails.User" />
 
 	</session-factory>
 

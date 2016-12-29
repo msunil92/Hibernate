@@ -24,6 +24,9 @@ public class StudentApp {
 			s1.getListOfColleges().add(college1);
 			s1.getListOfColleges().add(college2);
 			
+			college1.setStudent(s1);
+			college2.setStudent(s1);
+			
 			
 			session = factory.openSession();
 			session.beginTransaction();
