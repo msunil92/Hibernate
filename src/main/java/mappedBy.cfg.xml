@@ -30,7 +30,8 @@
 		<property name="hbm2ddl.auto">create</property>
 
 		<!-- Names the annotated entity class -->
-		<mapping class="com.hibernate.demo.UserDetails.User" />
+		<mapping class="mappedBy.Cascade.example.Customer" />
+		<mapping class="mappedBy.Cascade.example.Vehicle" />
 
 	</session-factory>
 
